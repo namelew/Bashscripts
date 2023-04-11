@@ -1,16 +1,27 @@
 #!/bin/bash
 
-CAMINHO_IMAGENS=imagens-livros
+converte_imagem(){
+    CAMINHO_IMAGENS=imagens-livros
 
-cd $CAMINHO_IMAGENS
+    cd $CAMINHO_IMAGENS
 
-if [ ! -d png ]
+    if [ ! -d png ]
+    then
+        mkdir png
+    fi
+
+    for imagem in *.jpg
+    do
+        imagem_sem_extensao=$(ls $imagem | awk -F. '{ print $1 }')
+        convert $imagem_sem_extensao.jpg png/$imagem_sem_extensao.png
+    done
+}
+
+converte_imagem 2>erros.txt
+
+if [ $? -eq 0 ]
 then
-    mkdir png
+    echo "Conversão realizada com sucesso"
+else
+    echo "Houve uma falha no processo"
 fi
-
-for imagem in *.jpg
-do
-    imagem_sem_extensao=$(ls $imagem | awk -F. '{ print $1 }')
-    convert $imagem_sem_extensao.jpg png/$imagem_sem_extensao.png
-done
