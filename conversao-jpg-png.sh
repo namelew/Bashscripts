@@ -1,3 +1,6 @@
 #!/bin/bash
-convert imagens-livros/amazon_aws.jpg imagens-livros/amazon_aws.png
-convert imagens-livros/algoritmos.jpg imagens-livros/algoritmos.png
+
+CAMINHO_IMAGENS=imagens-livros
+
+convert $CAMINHO_IMAGENS/$1.jpg $CAMINHO_IMAGENS/$1.png
+convert $CAMINHO_IMAGENS/$2.jpg $CAMINHO_IMAGENS/$2.png
