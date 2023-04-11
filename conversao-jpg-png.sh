@@ -2,7 +2,9 @@
 
 CAMINHO_IMAGENS=imagens-livros
 
-for imagem in $@
+cd $CAMINHO_IMAGENS
+
+for imagem in *.jpg
 do
-    convert $CAMINHO_IMAGENS/$imagem.jpg $CAMINHO_IMAGENS/$imagem.png
+    convert $imagem $imagem.png
 done
